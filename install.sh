@@ -12,6 +12,9 @@ mkdir -p $EPREFIX{,/tmp}/usr/portage/
 ln -s $DISTFILES $EPREFIX/usr/portage
 ln -s $DISTFILES $EPREFIX/tmp/usr/portage
 
+curl "http://overlays.gentoo.org/proj/alt/browser/trunk/prefix-overlay/scripts/bootstrap-prefix.sh?format=txt" -o bootstrap-prefix.sh
+chmod 755 bootstrap-prefix.sh
+
 ./bootstrap-prefix.sh $EPREFIX tree
 ./bootstrap-prefix.sh $EPREFIX/tmp make
 ./bootstrap-prefix.sh $EPREFIX/tmp wget
@@ -55,3 +58,8 @@ hash -r
 
 emerge --sync
 USE=-git emerge -u system
+
+echo 'USE="unicode nls"' >> $EPREFIX/etc/make.conf
+echo 'CFLAGS="-O2 -pipe < my-cpu-flags >"' >> $EPREFIX/etc/make.conf
+echo 'CXXFLAGS="${CFLAGS}"' >> $EPREFIX/etc/make.conf
+emerge -e system
