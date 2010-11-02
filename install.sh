@@ -31,28 +31,35 @@ chmod 755 bootstrap-prefix.sh
 hash -r
 
 emerge --oneshot sed
+
 emerge --oneshot --nodeps bash
 emerge --oneshot pax-utils
-emerge --oneshot --nodeps wget \
-	baselayout-prefix \
-	xz-utils \
-	m4 \
-	flex \
-	bison \
-	binutils-config \
-	binutils-apple \
-	gcc-config \
-	gcc-apple
-emerge --oneshot coreutils \
-	findutils \
-	tar \
-	grep \
-	patch \
-	gawk \
-	make
-emerge --oneshot --nodeps file \
-	eselect
+emerge --oneshot --nodeps wget
+
+emerge --oneshot --nodeps baselayout-prefix
+emerge --oneshot --nodeps xz-utils
+emerge --oneshot --nodeps m4
+emerge --oneshot --nodeps flex
+emerge --oneshot --nodeps bison
+emerge --oneshot --nodeps binutils-config
+
+emerge --oneshot --nodeps binutils-apple
+
+emerge --oneshot --nodeps gcc-config
+emerge --oneshot --nodeps gcc-apple
+
+emerge --oneshot coreutils
+emerge --oneshot findutils
+emerge --oneshot tar
+emerge --oneshot grep
+emerge --oneshot patch
+emerge --oneshot gawk
+emerge --oneshot make
+emerge --oneshot --nodeps file
+emerge --oneshot --nodeps eselect
+
 env FEATURES="-collision-protect" emerge --oneshot portage
+
 rm -Rf $EPREFIX/tmp
 ln -s /tmp $EPREFIX/tmp
 hash -r
@@ -61,7 +68,7 @@ emerge --sync
 USE=-git emerge -u system
 
 echo 'USE="unicode nls"' >> $EPREFIX/etc/make.conf
-echo 'CFLAGS="-O3 -march=native -pipe"' >> $EPREFIX/etc/make.conf
+echo 'CFLAGS="-O2 -pipe -march=native"' >> $EPREFIX/etc/make.conf
 echo 'CXXFLAGS="${CFLAGS}"' >> $EPREFIX/etc/make.conf
 echo 'MAKEOPTS="-j3"' >> $EPREFIX/etc/make.conf
 emerge -e system
