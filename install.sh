@@ -6,7 +6,7 @@ rm -Rf $EPREFIX
 export PATH="$EPREFIX/usr/bin:$EPREFIX/bin:$EPREFIX/tmp/usr/bin:$EPREFIX/tmp/bin:$PATH"
 export CHOST="x86_64-apple-darwin10"
 
-export DISTFILES="$HOME/distfiles"
+export DISTFILES="$HOME/Library/Caches/Gentoo/distfiles"
 mkdir -p $DISTFILES
 mkdir -p $EPREFIX{,/tmp}/usr/portage/
 ln -s $DISTFILES $EPREFIX/usr/portage
