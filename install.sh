@@ -53,7 +53,8 @@ emerge --oneshot coreutils \
 emerge --oneshot --nodeps file \
 	eselect
 env FEATURES="-collision-protect" emerge --oneshot portage
-rm -Rf $EPREFIX/tmp/*
+rm -Rf $EPREFIX/tmp
+ln -s /tmp $EPREFIX/tmp
 hash -r
 
 emerge --sync
