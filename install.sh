@@ -60,6 +60,10 @@ emerge --sync
 USE=-git emerge -u system
 
 echo 'USE="unicode nls"' >> $EPREFIX/etc/make.conf
-echo 'CFLAGS="-O3 -march=core2 -msse4.1 -w -pipe"' >> $EPREFIX/etc/make.conf
+echo 'CFLAGS="-O3 -march=native -pipe"' >> $EPREFIX/etc/make.conf
 echo 'CXXFLAGS="${CFLAGS}"' >> $EPREFIX/etc/make.conf
+echo 'MAKEOPTS="-j3"' >> $EPREFIX/etc/make.conf
 emerge -e system
+
+cd $EPREFIX/usr/portage/scripts
+./bootstrap-prefix.sh $EPREFIX startscript
