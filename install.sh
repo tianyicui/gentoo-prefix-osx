@@ -68,7 +68,7 @@ emerge --sync
 USE=-git emerge -u system
 
 echo 'USE="unicode nls"' >> $EPREFIX/etc/make.conf
-echo 'CFLAGS="-O2 -pipe -march=native"' >> $EPREFIX/etc/make.conf
+echo 'CFLAGS="-O3 -march=core2 -msse4.1 -w -pipe"' >> $EPREFIX/etc/make.conf # -march=native doesn't work here, why?
 echo 'CXXFLAGS="${CFLAGS}"' >> $EPREFIX/etc/make.conf
 echo 'MAKEOPTS="-j3"' >> $EPREFIX/etc/make.conf
 emerge -e system
