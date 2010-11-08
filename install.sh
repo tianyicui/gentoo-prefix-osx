@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+export MAKEOPTS="-j6"
 set -ve
 export EPREFIX="$HOME/Gentoo"
 rm -Rf $EPREFIX
@@ -20,10 +21,10 @@ chmod 755 bootstrap-prefix.sh
 ./bootstrap-prefix.sh $EPREFIX/tmp wget
 ./bootstrap-prefix.sh $EPREFIX/tmp sed
 ./bootstrap-prefix.sh $EPREFIX/tmp python
-./bootstrap-prefix.sh $EPREFIX/tmp coreutils
+./bootstrap-prefix.sh $EPREFIX/tmp coreutils6
 ./bootstrap-prefix.sh $EPREFIX/tmp findutils
-./bootstrap-prefix.sh $EPREFIX/tmp tar
-./bootstrap-prefix.sh $EPREFIX/tmp patc
+./bootstrap-prefix.sh $EPREFIX/tmp tar15
+./bootstrap-prefix.sh $EPREFIX/tmp patch9
 ./bootstrap-prefix.sh $EPREFIX/tmp grep
 ./bootstrap-prefix.sh $EPREFIX/tmp gawk
 ./bootstrap-prefix.sh $EPREFIX/tmp bash
