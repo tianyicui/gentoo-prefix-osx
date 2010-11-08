@@ -32,6 +32,8 @@ chmod 755 bootstrap-prefix.sh
 ./bootstrap-prefix.sh $EPREFIX portage
 hash -r
 
+ln -s $EPREFIX/usr/portage/profiles/prefix/linux/amd64 $EPREFIX/etc/make.profile
+
 emerge --oneshot sed
 
 emerge --oneshot --nodeps bash
@@ -45,7 +47,7 @@ emerge --oneshot --nodeps bison
 emerge --oneshot --nodeps binutils-config
 emerge --oneshot --nodeps binutils
 emerge --oneshot --nodeps gcc-config
-emerge --oneshot --nodeps gcc
+emerge --oneshot --nodeps "=gcc-4.2*"
 
 emerge --oneshot coreutils
 emerge --oneshot findutils
