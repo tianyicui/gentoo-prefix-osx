@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-export MAKEOPTS="-j6"
 set -ve
+export MAKEOPTS="-j6"
 export EPREFIX="$HOME/Gentoo"
-rm -Rf $EPREFIX
 export PATH="$EPREFIX/usr/bin:$EPREFIX/bin:$PATH"
 export CHOST="x86_64-linux-gnu"
 
+rm -Rf $EPREFIX
 export DISTFILES="$HOME/.cache/Gentoo/distfiles"
 mkdir -p $DISTFILES
 mkdir -p $EPREFIX/usr/portage/
