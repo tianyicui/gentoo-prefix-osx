@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -ve
+export MAKEOPTS="-j3"
 export EPREFIX="$HOME/Gentoo"
 rm -Rf $EPREFIX
 export PATH="$EPREFIX/usr/bin:$EPREFIX/bin:$EPREFIX/tmp/usr/bin:$EPREFIX/tmp/bin:$PATH"
@@ -71,6 +72,7 @@ echo 'USE="unicode nls"' >> $EPREFIX/etc/make.conf
 echo 'CFLAGS="-O3 -march=core2 -msse4.1 -w -pipe"' >> $EPREFIX/etc/make.conf # -march=native doesn't work here, why?
 echo 'CXXFLAGS="${CFLAGS}"' >> $EPREFIX/etc/make.conf
 echo 'MAKEOPTS="-j3"' >> $EPREFIX/etc/make.conf
+echo 'FEATURES="buildpkg"' >> $EPREFIX/etc/make.conf
 emerge -e system
 
 cd $EPREFIX/usr/portage/scripts
